@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: dharun05/samplereact:v0.7
+    container_name: samplereact
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - mynetwork
+
+  backend:
+    image: dharun05/sampleserver:v0.5
+    container_name: sampleserver
+    ports:
+      - "5001:5000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=password
+      - DB_NAME=mydb
+      - JWT_SECRET=your_jwt_secret
+    # depends_on:
+    #   - db
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    external: true 
