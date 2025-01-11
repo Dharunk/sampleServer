@@ -8,8 +8,7 @@
 # EXPOSE 5000
 # CMD ["node", "index.js"]
 
-# dockerfile for sample server -- checking 
-
+# Multistage dockerfile
 FROM node:16 AS builder
 
 WORKDIR /app
